@@ -128,6 +128,8 @@ class ResourceController implements ResourceControllerInterface
             } else {
                 return $token;
             }
+        } else {
+            $response->setError(401, 'required_token', 'The access token required');
         }
 
         $authHeader = sprintf('%s realm="%s"', $this->tokenType->getTokenType(), $this->config['www_realm']);
